@@ -1,0 +1,118 @@
+<div class='container content'>
+	<div class="row" scroll-spy>
+		<div class="col-md-9 bs-docs-section">
+			<div id="address-hangookdo">
+				<h1>Address</h1>
+				<br/>
+				<iframe class="map-hangookdo" width="500" height="500" frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" src="http://maps.google.co.nz/maps?hl=en&amp;q=239+moore+st+howick&amp;ie=UTF8&amp;hq=&amp;hnear=239+Moore+St,+Howick,+Auckland+2014,+Auckland&amp;gl=nz&amp;ll=-36.90429,174.926827&amp;spn=0.004659,0.010568&amp;t=m&amp;z=14&amp;vpsrc=6&amp;output=embed"></iframe>
+				<br />
+				<small> <a class="link-large-map" href="http://maps.google.co.nz/maps?hl=en&amp;q=239+moore+st+howick&amp;ie=UTF8&amp;hq=&amp;hnear=239+Moore+St,+Howick,+Auckland+2014,+Auckland&amp;gl=nz&amp;ll=-36.90429,174.926827&amp;spn=0.004659,0.010568&amp;t=m&amp;z=14&amp;vpsrc=6&amp;source=embed" >View Larger Map</a> </small>
+				<br/>
+				<br/>
+				<br/>
+				<table>
+					<tbody>
+						<tr>
+							<td colspan="2"> The Korea Hapkido Federation New Zealand Headquarters.
+							<br/>
+							Moorim Martial Arts Centre.
+							<br/>
+							Phone:    (09) 278 - 7380 Gym
+							<br/>
+							<br/>
+							<br/>
+							</td>
+						</tr>
+						<tr>
+							<td><b>Jenny Hong</b>
+							<br/>
+							administrator
+							<br/>
+							Mob:021 0267 1035
+							<br/>
+							yhhong100@gmail.com </td>
+							<td><b>Andy Shin</b>
+							<br/>
+							Instructor
+							<br/>
+							Mob:021 145 7169
+							<br/>
+							zxshinxz@gmail.com </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="email-hangookdo">
+				<br/>
+				<h1>Email Us</h1>
+				<br/>
+				<div>
+					<form class="email_form">
+						<table class="email-table">
+							<tr>
+								<td valign="top"><label >First Name <b class="warning">*</b> </label></td>
+								<td valign="top">
+								<input class="form-control" ng-model="email.firstName" type="text" name="first_name" maxlength="50" size="30" />
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><label >Last Name <b class="warning">*</b> </label></td>
+								<td valign="top">
+								<input class="form-control" ng-model="email.lastName" type="text" name="last_name" maxlength="50" size="30" />
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><label >Email Address <b class="warning">*</b></label></td>
+								<td valign="top">
+								<input class="form-control" ng-model="email.eAddress" type="text" name="email" maxlength="80" size="30" />
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><label >Telephone Number </label></td>
+								<td valign="top">
+								<input class="form-control" ng-model="email.phone" type="text" name="telephone" maxlength="30" size="30" />
+								</td>
+							</tr>
+							<tr>
+								<td valign="top"><label >Content <b class="warning">*</b></label></td>
+								<td valign="top">
+								<textarea class="form-control" ng-model="email.content" name="comments" cols="25" rows="6"></textarea></td>
+							</tr>
+							<tr>
+								<p ng-show="email" ng-hide="email.firstName && email.lastName && email.eAddress && email.content">
+									Please fill in
+									<span class="notification" ng-hide="email.firstName">First Name</span>
+									<span class="notification" ng-hide="email.lastName">Last Name</span>
+									<span class="notification" ng-hide="email.eAddress">Email Address</span>
+									<span class="notification" ng-hide="email.content">Email Content</span>
+									.
+								</p>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align: center">
+								<button class="btn-hangookdo" ng-disabled="!email.content" ng-click="sendEmail()">
+									Send
+								</button></td>
+							</tr>
+						</table>
+					</form>
+					<br />
+
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div angular-affix top=70 class="bs-docs-sidebar">
+				<ul class="nav bs-docs-sidenav">
+					<li>
+						<a class='active' spy="address-hangookdo" firstspy='true'>Address</a>
+					</li>
+					<li>
+						<a spy="email-hangookdo" lastspy='true'>Email Us</a>
+					</li>
+				</ul>
+				<a class="back-to-top" ng-click="gotoTop()">Back to top</a>
+			</div>
+		</div>
+	</div>
+</div>

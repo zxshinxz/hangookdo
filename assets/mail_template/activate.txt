@@ -1,0 +1,48 @@
+Han-Gook-Do user account activation email.
+----------
+Hi there,
+
+This email is for <%= request.activator.firstname %> <%= request.activator.lastname %>.
+
+If you are not <%= request.activator.firstname %> <%= request.activator.lastname %> please discard this email.
+
+If you are <%= request.activator.firstname %> <%= request.activator.lastname %>	Please click following link to activate your account:
+					<%= request.protocol %>://<%= request.headers.host %>/user/activate?user=<%= id %>&code=<%= code %>
+					
+Thank you
+HAN-GOOK-DO
+Authentic Korean Martial Art
+New Zealand Headquarters
+html:
+<div>
+	<div style="background:#0000ff">
+		<img src='cid:hangookdo-mailbanner' />
+	</div>
+	<br/>
+	<div style="padding-left:15px">
+	<div style="padding-left:15px">
+		Hi there,
+		<br/>
+		<br/>
+		This email is for <b><%= request.activator.firstname %> <%= request.activator.lastname %></b>.
+		<br/>
+		<br/>
+		If you are not <%= request.activator.firstname %> <%= request.activator.lastname %> please discard this email.
+		<br/>
+		<br/>
+		If you are <%= request.activator.firstname %> <%= request.activator.lastname %>	Please click following link to activate your account:
+		<%= request.protocol %>://<%= request.headers.host %>/user/activate?user=<%= id %>&code=<%= code %>
+	</div>
+	<br/>
+	<br/>
+	Thank you
+	<br/>
+	HAN-GOOK-DO
+	<br/>
+	Authentic Korean Martial Art
+	<br/>
+	New Zealand Headquarters
+	<br/>
+	<img src='cid:hangookdo-mailheader' />
+	</div>
+</div>

@@ -1,0 +1,64 @@
+<!-- Default home page -->
+
+<div id="main-app" class="default-page" ng-app="hangookdoApp">
+	<div id="wrap">
+		<div id="top-page" class="navbar-wrapper" ng-controller="NavCtrl">
+			<div class="container">
+				<div class="navbar navbar-inverse navbar-static-top" role="navigation">
+					<div class="container">
+						<div class="navbar-header">
+							<a ng-init='navCollapsed = true' ng-class='{ "nav-menu-open": !navCollapsed, "navbar-toggle": true}'  ng-click='navCollapsed = !navCollapsed'> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+							<a class="hapkido-logo navbar-brand" href="/"><img src="images/logo40.png" /></a>
+						</div>
+						<div collapse='navCollapsed' class="navbar-collapse collapse">
+							<ul class="nav navbar-nav">
+								<li ng-class="{ active: isActive('/')}">
+									<a ng-click='navCollapsed = true' href="/">HapKiDo</a>
+								</li>
+								<li ng-class="{ active: isActive('/about')}">
+									<a ng-click='navCollapsed = true' href="#/about">About</a>
+								</li>
+								<li ng-class="{ active: isActive('/membership')}">
+									<a ng-click='navCollapsed = true' href="#/membership">Membership</a>
+								</li>
+								<li ng-class="{ active: isActive('/links')}">
+									<a ng-click='navCollapsed = true' href="#/links">Links</a>
+								</li>
+								<li ng-class="{ active: isActive('/contact')}">
+									<a ng-click='navCollapsed = true' href="#/contact">Contact</a>
+								</li>
+							</ul>
+							<ul ng-show="!isLoggedIn" class="nav-logins nav navbar-nav" >
+								<li ng-class="{ active: isActive('/login')}">
+									<a ng-click='navCollapsed = true' href="#/login">Log in</a>
+								</li>
+								<li ng-class="{ active: isActive('/register')}">
+									<a ng-click='navCollapsed = true' href="#/register">Sign up</a>
+								</li>
+							</ul>
+							<ul ng-show="isLoggedIn" class="nav-logins nav navbar-nav" >
+								<li class='nameLabel'>
+									<label >Welcome!<span class="space">  </span>{{fullName}}</label>
+								</li>
+								<li class='nameLabel'>
+									<a ng-click='logOut()'>Log out</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="main" class="page {{ pageClass }}" ng-view></div>
+	</div>
+	<br/>
+	<!-- FOOTER -->
+	<footer id="footer" class="container" ng-controller="FooterCtrl">
+		<p class="pull-right">
+			<a ng-click="gotoTop()">Back to top</a>
+		</p>
+		<p>
+			© 2014 NZ Korea Hapkido Federation.
+		</p>
+	</footer>
+</div>

@@ -1,0 +1,108 @@
+<div>
+
+	<!--
+	<div resizable ng-style="{ padding: windowWidth, height: windowHeight }"></div>
+	-->
+	<!-- carousel -->
+
+	<carousel disable-animation="true" interval="myInterval">
+		<slide ng-repeat="slide in slides" active="slide.active">
+			<div class="carousel-image-container" ng-style="slide.style" >
+				<!-- <img ng-src="{{slide.image}}"/> -->
+			</div>
+		</slide>
+	</carousel>
+
+	<!-- carousel end -->
+
+	<div class="container marketing">
+
+		<!-- Three columns of text below the carousel -->
+		<div class="row">
+			
+			<div class="col-lg-4">
+				<img class="img-circle" src="images/grading.gif" style="width: 300px; height: 140px; border-radius:5%">
+				<h3 style="color: #8f2831;">The 4th Black-belt DAN test result</h3>
+				<p>
+					The 4th Black-belt DAN test and 37th Grading-test was held in Bucklands beach primary...
+				</p>
+				<p>
+					<a class="btn btn-default" href="#/news3" role="button">View details </a>
+				</p>
+			</div><!-- /.col-lg-4 -->
+			
+			<div class="col-lg-4">
+				<img class="img-circle" src="images/khflogo.jpg" style="width: 140px; height: 140px;">
+				<h3 style="color: #8f2831;">School Holiday Program - Register now!</h3>
+				<p>
+					We are going to have a special training programme during the school holiday...
+				</p>
+				<p>
+					<a class="btn btn-default" href="#/news1" role="button">View details</a>
+				</p>
+			</div><!-- /.col-lg-4 -->
+
+			<div class="col-lg-4">
+				<img  src="images/tshirt.jpg" style="width: 210px; height: 140px; border-radius:25%">
+				<h3 style="color: #8f2831;">T-shirt Arrived</h3>
+				<p>
+					Hapkido T-shirts have arrived. (all sizes) Please enquire Jenny for futher details...
+				</p>
+				<p>
+					<a class="btn btn-default" href="#/news2" role="button">View details </a>
+				</p>
+			</div><!-- /.col-lg-4 -->
+
+		</div><!-- /.row -->
+
+		<!-- START THE FEATURETTES -->
+
+		<!-- <hr class="featurette-divider">
+
+		<div class="row featurette">
+		<div class="col-md-7">
+		<h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+		<p class="lead">
+		Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+		</p>
+		</div>
+		<div class="col-md-5">
+		<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
+		</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+		<div class="col-md-5">
+		<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
+		</div>
+		<div class="col-md-7">
+		<h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+		<p class="lead">
+		Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+		</p>
+		</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+		<div class="col-md-7">
+		<h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+		<p class="lead">
+		Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+		</p>
+		</div>
+		<div class="col-md-5">
+		<img class="featurette-image img-responsive" data-src="holder.js/500x500/auto" alt="500x500" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI1MCIgeT0iMjUwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjMxcHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+NTAweDUwMDwvdGV4dD48L3N2Zz4=">
+		</div>
+		</div>
+
+		<hr class="featurette-divider"> -->
+
+		<!-- /END THE FEATURETTES -->
+
+	</div><!-- /.container -->
+</div>
+

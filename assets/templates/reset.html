@@ -1,0 +1,44 @@
+<div>
+	<div class='container content'>
+		<div class="row">
+			<div class="col-md-12">
+				<form name="newPasswordForm">
+					<table class="registration-table">
+						<thead>
+							<tr>
+								<th colspan="2"><h1>Hangookdo (Hapkido) User Password-Reset</h1></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><b class="notification padding">*</b>Password</td><td><span class="input-icon invalid glyphicon glyphicon-remove" ng-show="!newPasswordForm.password.$pristine && newPasswordForm.password.$error.minLength"> </span>
+									<span class="input-icon valid glyphicon glyphicon-ok" ng-show="!newPasswordForm.password.$pristine && !newPasswordForm.password.$error.minLength"> </span>
+								<input maxlength="20" class="register-input form-control" name="password" ng-model="user.psd" type='password' min-length="6" size="50" required/>
+								<span class="error notification" ng-show="newPasswordForm.password.$error.minLength">Password has to be minimun of 6 characters and maximum of 20 characters.</span></td>
+							</tr>
+							<tr>
+								<td><b class="notification padding">*</b>Confirm Password</td><td>
+								<span class="input-icon invalid glyphicon glyphicon-remove" ng-show="!newPasswordForm.confirmPassword.$pristine && (newPasswordForm.confirmPassword.$error.minLength || newPasswordForm.confirmPassword.$error.same)"></span>
+								<span class="input-icon valid glyphicon glyphicon-ok" ng-show="!newPasswordForm.confirmPassword.$pristine && !newPasswordForm.confirmPassword.$error.minLength && !newPasswordForm.confirmPassword.$error.same"></span>
+								<input maxlength="20" class="register-input form-control" name="confirmPassword" ng-model="user.confirmPassword" type='password' min-length="6" size="50" required same="{{user.psd}}"/>
+								<span class="error notification" ng-show="newPasswordForm.confirmPassword.$error.minLength">Password has to be minimun of 6 characters.</span>
+								<span class="error notification" ng-show="newPasswordForm.confirmPassword.$error.same">Confirm password is different to entered password.</span></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+								<button ng-disabled="lostPasswordForm.$invalid" ng-click="newPassword()" class="btn-hangookdo">
+									Reset
+								</button>
+								<button class="btn-hangookdo" ng-click="cancelNewPassword()">
+									Cancel
+								</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="loading" ng-show="isNewPassword"><img src="/images/loading.gif"/>
+	</div>
+</div>

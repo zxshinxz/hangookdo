@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="EUC-KR">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<div>
+			<div style="background:#0000ff">
+				<img src='mailbanner.png' />
+			</div>
+			<br/>
+			<div style="padding-left:15px">
+			<div style="padding-left:15px">
+				Hi there,
+				<br/>
+				<br/>
+				This email is for <b><%= request.activator.firstname %> <%= request.activator.lastname %></b>.
+				<br/>
+				<br/>
+				If you are not <%= request.activator.firstname %> <%= request.activator.lastname %> please discard this email.
+				<br/>
+				<br/>
+				If you are <%= request.activator.firstname %> <%= request.activator.lastname %>	Please click following link to activate your account:
+				<%= request.protocol %>://<%= request.headers.host %>/user/activate?user=<%= id %>&code=<%= code %>
+			</div>
+			<br/>
+			<br/>
+			Thank you
+			<br/>
+			HAN-GOOK-DO
+			<br/>
+			Authentic Korean Martial Art
+			<br/>
+			New Zealand Headquarters
+			<br/>
+			<img src='mailheader.png' />
+			</div>
+		</div>
+	</body>
+</html>
