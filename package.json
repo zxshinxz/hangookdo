@@ -34,8 +34,7 @@
     "jsonwebtoken": "^1.1.0"
   },
   "scripts": {
-  	"preinstall" : "npm uninstall grunt-cli"
-  	"postinstall" : "npm install sails",
+  	"postinstall" : "npm uninstall grunt-cli && npm install sails",
     "start": "sails lift --prod"
   },
   "main": "app.js",
