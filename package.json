@@ -31,10 +31,10 @@
     "grunt-ngmin": "0.0.3",
     "forever": "^0.11.1",
     "grunt-contrib-sass": "^0.7.3",
-    "jsonwebtoken": "^1.1.0",
-    "grunt-cli": "~0.1.13"
+    "jsonwebtoken": "^1.1.0"
   },
   "scripts": {
+  	"postinstall" : "npm install sails",
     "start": "sails lift --prod"
   },
   "main": "app.js",
