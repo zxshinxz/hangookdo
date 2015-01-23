@@ -65,10 +65,15 @@ module.exports.connections = {
 //    // database: 'your_mongo_db_name_here'
 //  },
   
+  
+  /*
+   * Production
+   */
   herokuMongodbServer : {
 		adapter : 'sails-mongo',
 		url: 'mongodb://hangookdodb:hangookdodbgrandmasterhwan@kahana.mongohq.com:10032/app27007423'
 	},
+	
 
   /***************************************************************************
   *                                                                          *
