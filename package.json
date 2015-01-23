@@ -34,7 +34,6 @@
     "jsonwebtoken": "^1.1.0"
   },
   "scripts": {
-  	"install" : "npm install",
     "start": "sails lift --prod"
   },
   "main": "app.js",
