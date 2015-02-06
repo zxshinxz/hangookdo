@@ -64,7 +64,9 @@ module.exports.policies = {
 		},
 		
 		NewsController : {
-			'*' : false
+//			'*' : true,
+			'*' : 'isAdmin',
+			view: true
 		},
 		
 		EmailController : {

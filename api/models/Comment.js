@@ -8,7 +8,26 @@
 module.exports = {
 
   attributes: {
-
+	  createdBy: 'string',
+	    text: {
+    		model:'user',
+    		required : true,
+    		notNull : true
+	    },
+	    news: {
+	    	model: 'news'
+	    },
+	    parent: {
+	    	model: 'comment',
+	    	dominant: true
+	    },
+	    children: {
+	    	collection: 'comment',
+	    	via: 'parent'
+	    },
+	    createdAt: function(){
+	      return moment(this.createdAt).format('LLL')
+	    }
   }
 };
 

@@ -39,7 +39,8 @@ module.exports.routes = {
 	//Custom routes here...
 	
 	'/newseditor' : {
-		view : 'newseditor'
+		controller : 'NewsController',
+		action: 'view'
 	},
 
 

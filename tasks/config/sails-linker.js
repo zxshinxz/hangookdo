@@ -22,9 +22,35 @@ module.exports = function(grunt) {
 				appRoot: '.tmp/public'
 			},
 			files: {
-				'.tmp/public/**/*.html': [require('../pipeline').jsFilesToInject, require('../pipeline').jsFilesToInjectForApp],
-				'views/**/*.html': [require('../pipeline').jsFilesToInject, require('../pipeline').jsFilesToInjectForApp],
-				'views/**/*.ejs': [require('../pipeline').jsFilesToInject, require('../pipeline').jsFilesToInjectForApp]
+				'.tmp/public/**/*.html': [require('../pipeline').jsFilesToInject],
+				'views/**/*.html': [require('../pipeline').jsFilesToInject],
+				'views/**/*.ejs': [require('../pipeline').jsFilesToInject]
+			}
+		},
+		devJsApp: {
+			options: {
+				startTag: '<!--APPSCRIPTS-->',
+				endTag: '<!--APPSCRIPTS END-->',
+				fileTmpl: '<script src="%s"></script>',
+				appRoot: '.tmp/public'
+			},
+			files: {
+				'.tmp/public/**/*.html': [require('../pipeline').jsFilesToInjectForApp],
+				'views/**/*.html': [require('../pipeline').jsFilesToInjectForApp],
+				'views/**/*.ejs': [require('../pipeline').jsFilesToInjectForApp]
+			}
+		},
+		devJsCMS: {
+			options: {
+				startTag: '<!--CMSSCRIPTS-->',
+				endTag: '<!--CMSSCRIPTS END-->',
+				fileTmpl: '<script src="%s"></script>',
+				appRoot: '.tmp/public'
+			},
+			files: {
+				'.tmp/public/**/*.html': [require('../pipeline').jsFilesToInjectForCMS],
+				'views/**/*.html': [require('../pipeline').jsFilesToInjectForCMS],
+				'views/**/*.ejs': [require('../pipeline').jsFilesToInjectForCMS]
 			}
 		},
 
@@ -37,12 +63,42 @@ module.exports = function(grunt) {
 				relative: true
 			},
 			files: {
-				'.tmp/public/**/*.html': [require('../pipeline').jsFilesToInject, require('../pipeline').jsFilesToInjectForApp],
-				'views/**/*.html': [require('../pipeline').jsFilesToInject, require('../pipeline').jsFilesToInjectForApp],
-				'views/**/*.ejs': [require('../pipeline').jsFilesToInject, require('../pipeline').jsFilesToInjectForApp]
+				'.tmp/public/**/*.html': [require('../pipeline').jsFilesToInject],
+				'views/**/*.html': [require('../pipeline').jsFilesToInject],
+				'views/**/*.ejs': [require('../pipeline').jsFilesToInject]
 			}
 		},
-
+		
+		devJsRelativeApp: {
+			options: {
+				startTag: '<!--SCRIPTS-->',
+				endTag: '<!--SCRIPTS END-->',
+				fileTmpl: '<script src="%s"></script>',
+				appRoot: '.tmp/public',
+				relative: true
+			},
+			files: {
+				'.tmp/public/**/*.html': [require('../pipeline').jsFilesToInjectForApp],
+				'views/**/*.html': [require('../pipeline').jsFilesToInjectForApp],
+				'views/**/*.ejs': [require('../pipeline').jsFilesToInjectForApp]
+			}
+		},
+		
+		devJsRelativeCMS: {
+			options: {
+				startTag: '<!--SCRIPTS-->',
+				endTag: '<!--SCRIPTS END-->',
+				fileTmpl: '<script src="%s"></script>',
+				appRoot: '.tmp/public',
+				relative: true
+			},
+			files: {
+				'.tmp/public/**/*.html': [require('../pipeline').jsFilesToInjectForCMS],
+				'views/**/*.html': [require('../pipeline').jsFilesToInjectForCMS],
+				'views/**/*.ejs': [require('../pipeline').jsFilesToInjectForCMS]
+			}
+		},
+		
 		prodJs: {
 			options: {
 				startTag: '<!--SCRIPTS-->',
@@ -51,9 +107,37 @@ module.exports = function(grunt) {
 				appRoot: '.tmp/public'
 			},
 			files: {
-				'.tmp/public/**/*.html': ['.tmp/public/min/production.min.js', '.tmp/public/min/productionapp.min.js'],
-				'views/**/*.html': ['.tmp/public/min/production.min.js', '.tmp/public/min/productionapp.min.js'],
-				'views/**/*.ejs': ['.tmp/public/min/production.min.js', '.tmp/public/min/productionapp.min.js']
+				'.tmp/public/**/*.html': ['.tmp/public/min/production.min.js'],
+				'views/**/*.html': ['.tmp/public/min/production.min.js'],
+				'views/**/*.ejs': ['.tmp/public/min/production.min.js']
+			}
+		},
+		
+		prodJsApp: {
+			options: {
+				startTag: '<!--APPSCRIPTS-->',
+				endTag: '<!--APPSCRIPTS END-->',
+				fileTmpl: '<script src="%s"></script>',
+				appRoot: '.tmp/public'
+			},
+			files: {
+				'.tmp/public/**/*.html': ['.tmp/public/min/productionapp.min.js'],
+				'views/**/*.html': ['.tmp/public/min/productionapp.min.js'],
+				'views/**/*.ejs': ['.tmp/public/min/productionapp.min.js']
+			}
+		},
+		
+		prodJsCMS: {
+			options: {
+				startTag: '<!--CMSSCRIPTS-->',
+				endTag: '<!--CMSSCRIPTS END-->',
+				fileTmpl: '<script src="%s"></script>',
+				appRoot: '.tmp/public'
+			},
+			files: {
+				'.tmp/public/**/*.html': ['.tmp/public/min/productioncms.min.js'],
+				'views/**/*.html': ['.tmp/public/min/productioncms.min.js'],
+				'views/**/*.ejs': ['.tmp/public/min/productioncms.min.js']
 			}
 		},
 
@@ -66,9 +150,39 @@ module.exports = function(grunt) {
 				relative: true
 			},
 			files: {
-				'.tmp/public/**/*.html': ['.tmp/public/min/production.min.js', '.tmp/public/min/productionapp.min.js'],
-				'views/**/*.html': ['.tmp/public/min/production.min.js', '.tmp/public/min/productionapp.min.js'],
-				'views/**/*.ejs': ['.tmp/public/min/production.min.js', '.tmp/public/min/productionapp.min.js']
+				'.tmp/public/**/*.html': ['.tmp/public/min/production.min.js'],
+				'views/**/*.html': ['.tmp/public/min/production.min.js'],
+				'views/**/*.ejs': ['.tmp/public/min/production.min.js']
+			}
+		},
+		
+		prodJsRelativeApp: {
+			options: {
+				startTag: '<!--APPSCRIPTS-->',
+				endTag: '<!--APPSCRIPTS END-->',
+				fileTmpl: '<script src="%s"></script>',
+				appRoot: '.tmp/public',
+				relative: true
+			},
+			files: {
+				'.tmp/public/**/*.html': ['.tmp/public/min/productionapp.min.js'],
+				'views/**/*.html': ['.tmp/public/min/productionapp.min.js'],
+				'views/**/*.ejs': ['.tmp/public/min/productionapp.min.js']
+			}
+		},
+		
+		prodJsRelativeCMS: {
+			options: {
+				startTag: '<!--CMSSCRIPTS-->',
+				endTag: '<!--CMSSCRIPTS END-->',
+				fileTmpl: '<script src="%s"></script>',
+				appRoot: '.tmp/public',
+				relative: true
+			},
+			files: {
+				'.tmp/public/**/*.html': ['.tmp/public/min/productioncms.min.js'],
+				'views/**/*.html': ['.tmp/public/min/productioncms.min.js'],
+				'views/**/*.ejs': ['.tmp/public/min/productioncms.min.js']
 			}
 		},
 

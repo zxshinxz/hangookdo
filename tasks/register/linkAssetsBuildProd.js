@@ -1,6 +1,8 @@
 module.exports = function (grunt) {
 	grunt.registerTask('linkAssetsBuildProd', [
 		'sails-linker:prodJsRelative',
+		'sails-linker:prodJsRelativeApp',
+		'sails-linker:prodJsRelativeCMS',
 		'sails-linker:prodStylesRelative',
 		'sails-linker:devTpl',
 		'sails-linker:prodJsRelativeJade',

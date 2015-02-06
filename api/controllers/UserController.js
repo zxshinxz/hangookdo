@@ -36,8 +36,6 @@ function initConfig(){
 				}, data).exec(cb);
 			}
 		}
-	
-	
 
 //		var url = "smtp://" + sails.config.connections.email.emailId + ":"
 //			+ sails.config.connections.email.emailPsd + ""
@@ -47,7 +45,7 @@ function initConfig(){
 	var url = {
 			host : sails.config.connections.email.host,
 			port : sails.config.connections.email.port,
-			from : "Hapkido Hangookdo Account Service ✔ <hangookdo@gmail.com>",
+			from : "Hapkido Hangookdo Account Service ��<hangookdo@gmail.com>",
 			domain : "Hangookdo",
 			secure : false,
 			protocol: "SMTP"
@@ -256,6 +254,14 @@ module.exports = {
 //								"id": id,
 //								"isUserActive":true
 //						}
+						
+						if(userinfo.role === 'ADMIN'){
+							req.session.user = {
+									"id": id,
+									"isAdmin":true
+							}
+						}
+						
 						_.extend(userinfo,{"isUserActive":true});
 						res.send(200,{user: userinfo, token: sailsTokenAuth.issueToken(userinfo)});
 						
@@ -264,7 +270,9 @@ module.exports = {
 								"id": id,
 								"isUserActive":false
 						}
+						
 						_.extend(userinfo,{"isUserActive":false});
+						
 						res.send(200,{user: userinfo});
 						
 					}

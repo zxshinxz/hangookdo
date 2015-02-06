@@ -35,10 +35,14 @@
 								<li ng-class="{ active: isActive('/register')}">
 									<a ng-click='navCollapsed = true' href="#/register">Sign up</a>
 								</li>
+								
 							</ul>
 							<ul ng-show="isLoggedIn" class="nav-logins nav navbar-nav" >
 								<li class='nameLabel'>
 									<label >Welcome!<span class="space">  </span>{{fullName}}</label>
+								</li>
+								<li ng-show="isLoggedIn && isAdmin" class='nameLabel'>
+									<a ng-click='enterAdmin()'>Admin</a>
 								</li>
 								<li class='nameLabel'>
 									<a ng-click='logOut()'>Log out</a>

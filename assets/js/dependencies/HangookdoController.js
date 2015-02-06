@@ -282,9 +282,10 @@ hangookdoApp.controller('RegisterCtrl',function($scope, $location, HangookdoServ
 });
 
 
-hangookdoApp.controller('NavCtrl',function($scope, $location, $cookieStore, HangookdoService) {
+hangookdoApp.controller('NavCtrl',function($scope, $location, $cookieStore, HangookdoService, $window) {
 	
 	$scope.isLoggedIn;
+	$scope.isAdmin;
 	
 	$scope.getFullName = function(){
 		var user = HangookdoService.getUser().user;
@@ -303,10 +304,16 @@ hangookdoApp.controller('NavCtrl',function($scope, $location, $cookieStore, Hang
     
     $scope.$watch("service.isLoggedIn()",function(newVal){
     	$scope.isLoggedIn = newVal;
-    	if($scope.fullName == undefined){
-    		$scope.getFullName();
-    	}
+    	$scope.getFullName();
     });
+    
+    $scope.$watch("service.isAdmin()",function(newVal){
+    	$scope.isAdmin = newVal;
+    });
+    
+    $scope.enterAdmin = function(){
+    	$window.location.href = 'newseditor';
+    }
     
 });
 
