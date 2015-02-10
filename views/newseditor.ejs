@@ -1,5 +1,7 @@
-<%- partial('header') %>
-<div class="cms-main" ng-app="cmsHangookdo" >
-	<div ng-view></div>
+<div ng-app="cmsHangookdo" >
+	<%- partial('header') %>
+	<div class="cms-main" >
+		<div ng-view></div>
+	</div>
+	<%- partial('footer') %>
 </div>
-<%- partial('footer') %>

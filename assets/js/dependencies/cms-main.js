@@ -1,7 +1,7 @@
 
 'user strict'
 
-var cmsApp = angular.module('cmsHangookdo', ['ngRoute', 'ui.bootstrap', 'textAngular']);
+var cmsApp = angular.module('cmsHangookdo', ['ngRoute', 'ui.bootstrap', 'textAngular', 'angularFileUpload']);
 
 cmsApp.config(function($routeProvider) {
 	$routeProvider
@@ -14,6 +14,9 @@ cmsApp.config(function($routeProvider) {
 	}).when('/edit', {
 		templateUrl : 'templates/newsedit.html',
 		controller : 'newsEditCtrl'
+	}).when('/gallery', {
+		templateUrl : 'templates/gallery.html',
+		controller : 'galleryCtrl'
 	}).otherwise({redirectTo: '/'});
 });
 
@@ -105,6 +108,59 @@ cmsApp.controller('newsEditCtrl', function($scope, CMSHangookdoService, $window,
 		 });
 	}
 	
+});
+
+cmsApp.controller('galleryCtrl', ['$scope', '$upload', 'CMSHangookdoService', function ($scope, $upload, CMSHangookdoService ) {
+	
+	
+	$scope.photos = null;
+	
+	// Initialise news data
+	$scope.promise = CMSHangookdoService.getImages();
+	$scope.promise.then(function(result){
+		$scope.photos = result;
+	});
+	
+	$scope.files = null;
+	$scope.fileCounter = 0;
+	
+	$scope.$watch('files', function () {
+	    $scope.upload($scope.files);
+	});
+	
+	$scope.$watch('fileCounter', function () {
+	    if($scope.files){
+	    	if($scope.files.length == $scope.fileCounter){
+	    		alert("Photo upload completed");
+	    	}
+	    }
+	});
+	
+	$scope.upload = function (files) {
+		$scope.fileCounter = 0;
+	    if (files && files.length) {
+	        for (var i = 0; i < files.length; i++) {
+	            var file = files[i];
+	            $upload.upload({
+	                url: 'photo/upload',
+	                header: {enctype:"multipart/form-data"},
+	                file: file
+	            }).progress(function (evt) {
+	                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+	            }).success(function (data, status, headers, config) {
+	            	$scope.fileCounter++;
+	            });
+	        }
+	    }
+	};
+	
+}]);
+    
+
+cmsApp.controller('CMSNavCtrl', function($scope, $location) {
+	$scope.isActive = function (viewLocation) { 
+        return viewLocation === $location.path();
+    };
 });
 
 cmsApp.service('CMSHangookdoService', function($q, $http) {
@@ -203,13 +259,32 @@ cmsApp.service('CMSHangookdoService', function($q, $http) {
 		
 		return deferred.promise;
 	};
+	
+	var _getImages = function() {
+		var deferred = $q.defer();
+		
+		$http({
+			url: 'photo',
+			method: 'GET',
+			params: {sort: 'createdAt DESC'}
+		})
+		.success(function(data, status, headers, config){
+			deferred.resolve(data);
+		})
+		.error(function(data, status, headers, config){
+			deferred.reject();
+		});
+		
+		return deferred.promise;
+	};
 
 	return {
 		newsList : _newsList,
 		getNews: _getNews,
 		createNews: _createNews,
 		updateNews: _updateNews,
-		deleteNews: _deleteNews
+		deleteNews: _deleteNews,
+		getImages: _getImages
 	};
 });
 

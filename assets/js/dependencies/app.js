@@ -1,7 +1,7 @@
 
 
 var hangookdoApp = angular.module('hangookdoApp', [  'ngTouch', 'ngAnimate','ngCookies', 'ngResource',
-		'angularFileUpload','ui.bootstrap', 'ngRoute']);
+		'ui.bootstrap', 'ngRoute']);
 
 hangookdoApp.config(function($routeProvider, AccessLevels) {
 	

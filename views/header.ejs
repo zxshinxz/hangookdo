@@ -1,7 +1,11 @@
-<div class="cms-nav">
+<div class="cms-nav" ng-controller="CMSNavCtrl">
 	<h3>Hangookdo CMS</h3>
 	<ul>
-		<li>News</li>
+		<li ng-class="{ active: isActive('/')}">
+			<a href="#/">News</a>
+		</li>
+		<li ng-class="{ active: isActive('/gallery')}">
+			<a href="#/gallery">Gallery</a>
+		</li>
 	</ul>
-	
 </div>

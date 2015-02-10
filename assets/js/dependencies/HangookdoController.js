@@ -1,6 +1,6 @@
 'user strict'
 
-hangookdoApp.controller('MainCtrl',function($scope, HangookdoService, $fileUploader, $window) {
+hangookdoApp.controller('MainCtrl',function($scope, HangookdoService, $window) {
 	 $scope.pageClass = 'page-home';
 	 $scope.myInterval = 4000;
 	 
