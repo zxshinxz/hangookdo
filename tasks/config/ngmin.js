@@ -19,7 +19,12 @@ module.exports = function(grunt) {
 		app : {
 			src : '.tmp/public/concat/productionapp.js',
 			dest : '.tmp/public/concat/productionapp.js'
+		},
+		cms : {
+			src : '.tmp/public/concat/productioncms.js',
+			dest : '.tmp/public/concat/productioncms.js'
 		}
+	
 	});
 
 	grunt.loadNpmTasks('grunt-ngmin');

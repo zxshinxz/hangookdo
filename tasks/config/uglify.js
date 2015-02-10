@@ -19,6 +19,10 @@ module.exports = function(grunt) {
 		app: {
 			src: ['.tmp/public/concat/productionapp.js'],
 			dest: '.tmp/public/min/productionapp.min.js'
+		},
+		cms: {
+			src: ['.tmp/public/concat/productioncms.js'],
+			dest: '.tmp/public/min/productioncms.min.js'
 		}
 	});
 

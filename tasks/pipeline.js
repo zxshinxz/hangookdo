@@ -37,9 +37,8 @@ var jsFilesToInject = [
 	'js/dependencies/angular-cookies.js',
 	'js/dependencies/angular-resource.js',
 	'js/dependencies/angular-route.js',
-	'js/dependencies/angular-sanitize.js',
 	'js/dependencies/angular-touch.js',
-	'js/dependencies/angular-file-upload.js'
+	'js/dependencies/angular-file-upload.js',
 //	'js/dependencies/angular-ui-router.js'
 // All of the rest of your client-side js files
 // will be injected here in no particular order.
@@ -49,12 +48,22 @@ var jsFilesToInject = [
 //(uses Grunt-style wildcard/glob/splat expressions)
 var jsFilesToInjectForApp = [
 	'js/dependencies/app.js',
+	'js/dependencies/cms-main.js',
 	'js/dependencies/HangookdoController.js',
 	'js/dependencies/HangookdoDirective.js',
 	'js/dependencies/HangookdoService.js',
 	'js/dependencies/HangookdoAccessLevels.js',
 	'js/dependencies/HangookdoAuth.js',
 	'js/dependencies/localStorage.js'
+];
+
+//Client-side javascript files to inject in order
+//(uses Grunt-style wildcard/glob/splat expressions)
+var jsFilesToInjectForCMS = [
+	'js/dependencies/textAngular-rangy.min.js',
+	'js/dependencies/textAngular-sanitize.min.js',
+	'js/dependencies/textAngular.min.js',
+	'js/dependencies/cms-main.js',
 ];
 
 
@@ -83,6 +92,9 @@ module.exports.jsFilesToInject = jsFilesToInject.map(function(path) {
   return '.tmp/public/' + path;
 });
 module.exports.jsFilesToInjectForApp = jsFilesToInjectForApp.map(function(path) {
+	  return '.tmp/public/' + path;
+});
+module.exports.jsFilesToInjectForCMS = jsFilesToInjectForCMS.map(function(path) {
 	  return '.tmp/public/' + path;
 });
 module.exports.templateFilesToInject = templateFilesToInject.map(function(path) {

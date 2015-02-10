@@ -1,0 +1,22 @@
+<div>
+	<div class='cms-news-add-panel div-align-center'>
+		<input ng-click="createNews()" class="green-button big-button btn btn-default btn-lg" type="button" value="Create News" />
+	</div>
+	<h1>NEWS</h1>
+	<div class="cms-news-list">
+		<accordion close-others="true">
+			<accordion-group ng-click="toggleOpen()" heading="{{item.title}}" ng-repeat="item in newslist">
+				<accordion-heading class="panel-heading">
+					<div class="newslist-click-panel">
+						{{item.title}}
+						<input ng-click="deleteNews(item); $event.stopPropagation();" type="button" value="Delete" class="red-button news-list-button hgd-button btn btn-default btn-lg" >
+						</input>
+						<input ng-click="editNews(item); $event.stopPropagation();" type="button" value="Edit" class="green-button news-list-button hgd-button btn btn-default btn-lg" >
+						</input>
+					</div>
+				</accordion-heading>
+				<div ng-bind-html="item.content"></div>
+			</accordion-group>
+		</accordion>
+	</div>
+</div>

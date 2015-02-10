@@ -1,7 +1,7 @@
 
 
 var hangookdoApp = angular.module('hangookdoApp', [  'ngTouch', 'ngAnimate','ngCookies', 'ngResource',
-		'ngSanitize','angularFileUpload','ui.bootstrap', 'ngRoute']);
+		'ui.bootstrap', 'ngRoute']);
 
 hangookdoApp.config(function($routeProvider, AccessLevels) {
 	
@@ -131,7 +131,7 @@ hangookdoApp.config(function($routeProvider, AccessLevels) {
 		templateUrl : 'templates/tshirt.html'
 	}).when('/news3', {
 		templateUrl : 'templates/grading.html'
-	});
+	}).otherwise({redirectTo: '/'});
 });
                                                        
 

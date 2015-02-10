@@ -23,6 +23,13 @@ hangookdoApp.service('HangookdoService', function($q, $http, LocalService, Acces
 		return false;
 	}
 	
+	var _isAdmin = function(){
+		if(user.user.role === 'ADMIN'){
+			return true;
+		}
+		return false;
+	}
+	
 	
 	var _createFile = function(name, content) {
 		var deferred = $q.defer();
@@ -307,6 +314,7 @@ hangookdoApp.service('HangookdoService', function($q, $http, LocalService, Acces
 		resetPassword: _resetPassword,
 		newPassword: _newPassword,
 		isLoggedIn: _isLoggedIn,
+		isAdmin: _isAdmin,
 		getUser: _getUser,
 		authorize: _authorize,
 		isAuthenticated: _isAuthenticated

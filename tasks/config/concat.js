@@ -24,6 +24,10 @@ module.exports = function(grunt) {
 		app : {
 			src : require('../pipeline').jsFilesToInjectForApp,
 			dest : '.tmp/public/concat/productionapp.js'
+		},
+		cms : {
+			src : require('../pipeline').jsFilesToInjectForCMS,
+			dest : '.tmp/public/concat/productioncms.js'
 		}
 	});
 

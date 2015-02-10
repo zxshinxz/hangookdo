@@ -28,10 +28,9 @@
 	text-align: center;
 }
 
-/*html { height: 100%; }*/
+html { min-height: 100%; }
 
 body {
-	padding-bottom: 40px;
 	color: #5a5a5a;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -53,7 +52,6 @@ a:active, a:hover {
 }
 
 li {
-	list-style: none;
 }
 
 .space {
@@ -99,8 +97,10 @@ input.ng-dirty.ng-valid {
 	display: none;
 }
 
+
 /* CUSTOMIZE THE NAVBAR
  -------------------------------------------------- */
+
 
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
@@ -761,6 +761,211 @@ table.registration-table > tbody > tr:nth-child(5) > td:last-child {
 	margin-top: -50px;
 }
 
+/* CMS css
+ ============================================================================= */
+
+.cms-nav{
+	height: 70px;
+	background: #3333aa;
+	padding-left: 50px;
+	box-shadow: 0px 0px 10px grey;
+}
+
+.cms-nav > h3{
+	color: white;
+	float: left;
+	
+}
+
+.cms-nav ul{
+	list-style: none;
+}
+
+.cms-nav li, .cms-nav a{
+	color: white;
+	text-decoration: none;
+}
+
+.cms-nav > ul{
+	float:left;
+	margin-left: 50px;
+}
+
+.cms-nav > ul > li{
+	color: white;
+	float:left;
+	font-size: 1.5em;
+	height: 70px;
+	padding: 15px;
+	padding-top: 17px;
+}
+
+.cms-nav > ul > li.active{
+	background: #aa3333;
+}
+
+.cms-breadcrum{
+	height: 70px;
+	width: 100%;
+}
+
+.cms-main{
+	padding-top: 50px;
+	width: 1280px;
+	margin: auto;
+	box-shadow: 0px 0px 10px grey;
+	padding: 30px 20px 10px 20px;
+    margin-bottom: 30px;
+}
+
+div.cms-news-add-panel{
+	margin-bottom: 30px;	
+	width: 100%;
+}
+
+div.cms-news-list{
+}
+
+div.cms-gallery-add-panel{
+	height: 200px;
+	text-align: center;
+}
+
+.drop-box {
+	background: #F8F8F8;
+	border: 5px dashed #DDD;
+	width: 60%;
+	height: 150px; 
+	padding-top: 50px;
+	margin: auto;
+	font-size: 2.5em;
+	font-weight: bold;
+}
+
+
+.drop-box.dragover {
+	border: 5px dashed blue;
+}
+
+.drop-box.dragover-err {
+	border: 5px dashed red;
+}
+
+table.news-form-table{
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+table.news-form-table > tbody{
+	width: 100%;
+}
+
+table.news-form-table > tbody > tr{
+	width: 100%;
+}
+
+table.news-form-table > tbody > tr > td{
+	width: 100%;
+}
+
+table.news-form-table > tbody > tr > td > input.news-title{
+	width: 100%;
+	height: 60px;
+	margin-bottom: 30px;
+	font-size: 28px;
+}
+
+.ta-editor {
+	min-height: 350px;
+	height: auto;
+	overflow: auto;
+	font-family: inherit;
+	font-size: 100%;
+}
+
+.ta-scroll-window > .ta-bind {
+	min-height: 350px;
+  	height: auto;
+  	overflow: auto;
+}
+
+.ta-hidden-input{
+	display: none;
+}
+
+.panel-heading{
+	cursor: pointer;
+	padding: 0;
+}
+
+.div-align-center{
+	text-align: center;
+}
+
+.big-button{
+	width: 60%;
+	margin: center !important;
+}
+
+.green-button{
+	color:white;
+	background: #4dbe4a;
+}
+
+.red-button{
+	color:white;
+	background: #ff5641;
+}
+
+.amber-button{
+	color:white;
+	background: #eccc70;
+}
+
+.blue-button{
+	color:white;
+	background: #acc7dc;
+}
+
+.cms-gallery-image{
+	width: 150px;
+	margin-bottom: 20px;
+}
+
+.green-button:hover, .red-button:hover, .amber-button:hover, .blue-button:hover{
+	color:black;
+	background: white;
+}
+
+
+.news-form-button{
+	float: right;
+	margin-top: 30px;
+	margin-right: 10px;
+	width: 120px;
+}
+
+.news-list-button{
+	float: right;
+	margin-right: 10px;
+	width: 120px;
+}
+
+.newslist-click-panel{
+	padding: 15px 10px;
+}
+
+.panel-title{
+	height: 45 px;
+	font-size: 2.3em;
+	line-height: 1.5em;
+}
+
+table.news-form-table > tbody > tr:last-child > td {
+	padding-right: 50px;
+}
+
+
 /* RESPONSIVE CSS
  -------------------------------------------------- */
 
@@ -866,9 +1071,7 @@ div.navbar.navbar-inverse.navbar-static-top {
 	-moz-animation: fadeOut 0.2s both ease-in;
 	transform-origin: 0% 0%;
 	animation: fadeOut 0.2s both ease-in;
-	position: absolute;
-	left: 0;
-	top: 0;
+	position:absolute;
 }
 
 .page.ng-enter {
@@ -876,10 +1079,7 @@ div.navbar.navbar-inverse.navbar-static-top {
 	-webkit-animation: slideInleft 0.6s both ease-in;
 	-moz-animation: slideInleft 0.6s both ease-in;
 	animation: slideInleft 0.6s both ease-in;
-	position: absolute;
-	left: 0;
-	top: 0;
-	overflow:hidden;
+	position:absolute;
 }
 
 // /* home -------------------------- */

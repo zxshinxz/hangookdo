@@ -1,0 +1,13 @@
+<h1>Gallery</h1>
+<div class='cms-gallery-add-panel div-align-center'>
+	<div class='drop-box' ng-file-drop ng-model='files' ng-file-change
+	drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
+	drop-available="dropSupported" ng-accept="'image/*'" ng-multiple="true">
+		Drop images here to upload.
+	</div>
+	<div class="image-upload-progress"></div>
+</div>
+<div class="col-lg-2 div-align-center" ng-repeat="item in photos">
+	<img src="{{item.url}}" class="cms-gallery-image"></img>
+</div>
+

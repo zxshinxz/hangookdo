@@ -9,14 +9,14 @@
  */
 
 module.exports = {
-
+		autoPK: false,
 	attributes : {
-
 		userid : {
 			unique : true,
 			type : 'String',
 			maxLength : 50,
 		    minLength: 6,
+		    primaryKey: true,
 			required : true,
 			notNull : true
 		},
@@ -52,7 +52,6 @@ module.exports = {
 		toJSON : function() {
 			var obj = this.toObject();
 			delete obj.password;
-			delete obj.role;
 			delete obj.activated;
 			delete obj.accesscount;
 			delete obj.activation_code;

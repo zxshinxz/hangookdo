@@ -27,32 +27,39 @@
 		+ Use a different or additional preprocessor, like SASS, SCSS or Stylus
 		-->
 		<!--STYLES-->
-		<link rel="stylesheet" href="/min/production.min.css">
+		<link rel="stylesheet" href="/styles/bootstrap.css">
+		<link rel="stylesheet" href="/styles/font-awesome.css">
+		<link rel="stylesheet" href="/styles/font-awesome.min.css">
+		<link rel="stylesheet" href="/styles/importer.css">
+		<link rel="stylesheet" href="/styles/main.css">
+		<link rel="stylesheet" href="/styles/normalize.css">
 		<!--STYLES END-->
 		<!--SCRIPTS-->
-		<script src="/min/production.min.js"></script>
-		<script src="/min/productionapp.min.js"></script>
+		<script src="/js/dependencies/jquery.js"></script>
+		<script src="/js/dependencies/angular.js"></script>
+		<script src="/js/dependencies/ui-bootstrap-tpls.js"></script>
+		<script src="/js/dependencies/TimelineMax.min.js"></script>
+		<script src="/js/dependencies/TweenMax.min.js"></script>
+		<script src="/js/dependencies/angular-animate.js"></script>
+		<script src="/js/dependencies/angular-cookies.js"></script>
+		<script src="/js/dependencies/angular-resource.js"></script>
+		<script src="/js/dependencies/angular-route.js"></script>
+		<script src="/js/dependencies/angular-touch.js"></script>
+		<script src="/js/dependencies/angular-file-upload.js"></script>
 		<!--SCRIPTS END-->
+		<!--APPSCRIPTS-->
+		<script src="/js/dependencies/app.js"></script>
+		<script src="/js/dependencies/cms-main.js"></script>
+		<script src="/js/dependencies/HangookdoController.js"></script>
+		<script src="/js/dependencies/HangookdoDirective.js"></script>
+		<script src="/js/dependencies/HangookdoService.js"></script>
+		<script src="/js/dependencies/HangookdoAccessLevels.js"></script>
+		<script src="/js/dependencies/HangookdoAuth.js"></script>
+		<script src="/js/dependencies/localStorage.js"></script>
+		<!--APPSCRIPTS END-->
 	</head>
 
 	<body >
-		<script>
-			(function(i, s, o, g, r, a, m) {
-				i['GoogleAnalyticsObject'] = r;
-				i[r] = i[r] ||
-				function() {
-					(i[r].q = i[r].q || []).push(arguments)
-				}, i[r].l = 1 * new Date();
-				a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-				a.async = 1;
-				a.src = g;
-				m.parentNode.insertBefore(a, m)
-			})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-			ga('create', 'UA-59184707-1', 'auto');
-			ga('send', 'pageview');
-
-		</script>
 		<%- body %>
 
 		<!--
