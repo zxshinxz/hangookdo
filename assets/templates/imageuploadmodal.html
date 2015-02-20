@@ -1,0 +1,14 @@
+<div class="modal-header">
+	<h3 class="modal-title">Select picture</h3>
+</div>
+<div class="modal-body" >
+	 <input type="file" ng-file-select accept="image/*" ng-model="imageFile">
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-disabled="imageFileNull() || disableUploadBtn" ng-click="upload()">
+		Upload
+	</button>
+	<button class="btn btn-primary" ng-click="cancel()">
+		Cancel
+	</button>
+</div>

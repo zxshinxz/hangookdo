@@ -5,26 +5,6 @@
  * @help :: See http://links.sailsjs.org/docs/controllers
  */
 
-var nodemailer = require("nodemailer");
-
-
-//create reusable transport method (opens pool of SMTP connections)
-var smtpTransport = null;
-	
-	
-function initConfig(){
-	if(smtpTransport != null)
-		return;
-	smtpTransport = nodemailer.createTransport("SMTP",{
-//		service: sails.config.connections.email.service,
-		host: sails.config.connections.email.host, // hostname
-		port: sails.config.connections.email.port, // port for secure SMTP
-		 auth: {
-		     user: sails.config.connections.email.emailId,
-		     pass: sails.config.connections.email.emailPsd
-		 }
-		});
-}
 
 function composeMail(firstname, lastname, content, contact){
 	var composedMail = {};
@@ -44,7 +24,7 @@ module.exports = {
 
 	sendmail : function(req, res) {
 		
-		initConfig();
+		var smtpTransport = sails.config.connections.email;
 		
 		var firstname = req.param("firstname");
 		var lastname = req.param("lastname");

@@ -19,6 +19,12 @@ module.exports = {
 						required : true,
 						notNull : true
 					},
+					name : {
+						type : 'string',
+					},
+					url : {
+						type : 'string',
+					},
 					version : {
 						type: 'integer'
 					},
@@ -37,9 +43,13 @@ module.exports = {
 					tags : {
 						collection: 'tag'
 					},
+					category : {
+						type : 'string',
+					},
 					createdAt: function(){
 				        return moment(this.createdAt).format('LLL')
-				    }
+				    },
+				    
 			},
 
 //			afterValidate: function(values, next){

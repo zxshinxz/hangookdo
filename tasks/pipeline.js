@@ -37,6 +37,7 @@ var jsFilesToInject = [
 	'js/dependencies/angular-cookies.js',
 	'js/dependencies/angular-resource.js',
 	'js/dependencies/angular-route.js',
+	'js/dependencies/angular-sanitize.js',
 	'js/dependencies/angular-touch.js',
 	'js/dependencies/angular-file-upload.js',
 //	'js/dependencies/angular-ui-router.js'

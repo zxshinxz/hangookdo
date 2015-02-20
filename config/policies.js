@@ -63,9 +63,13 @@ module.exports.policies = {
 			reset : 'isPasswordReset'
 		},
 		
-		NewsController : {
+		CmsController : {
 			'*' : 'isAdmin',
 			view: true
+		},
+		
+		NewsController : {
+			'*' : 'isAdmin'
 		},
 		
 		PhotoController : {

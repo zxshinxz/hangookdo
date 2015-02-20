@@ -1,4 +1,4 @@
-<h1>Gallery</h1>
+<h1>Gallery1</h1>
 <div class='cms-gallery-add-panel div-align-center'>
 	<div class='drop-box' ng-file-drop ng-model='files' ng-file-change
 	drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}"
@@ -7,7 +7,10 @@
 	</div>
 	<div class="image-upload-progress"></div>
 </div>
-<div class="col-lg-2 div-align-center" ng-repeat="item in photos">
-	<img src="{{item.url}}" class="cms-gallery-image"></img>
-</div>
 
+<div class="cms-gallery-container">
+	<h1>Photos in DB</h1>
+	<div class="col-lg-2 div-align-center" ng-repeat="item in photos">
+		<img src="{{item.url}}" class="cms-gallery-image"></img>
+	</div>
+</div>

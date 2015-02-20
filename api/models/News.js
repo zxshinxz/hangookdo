@@ -25,12 +25,15 @@ module.exports = {
 						required : true,
 						notNull : true
 					},
+					titlePhoto : {
+						model:'Photo'
+					},
 					content : {
 						type: 'string',
 						maxLength : 10000
 					},
 					createdBy:{
-			            model:'user',
+			            model:'user'
 			        },
 					comments : {
 					      collection: 'comment',

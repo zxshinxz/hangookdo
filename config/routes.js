@@ -38,8 +38,8 @@ module.exports.routes = {
 
 	//Custom routes here...
 	
-	'/newseditor' : {
-		controller : 'NewsController',
+	'/cms' : {
+		controller : 'CmsController',
 		action: 'view'
 	},
 

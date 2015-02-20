@@ -6,18 +6,12 @@
  */
 
 
-var cloudinary = require('cloudinary');
-var fs = require('fs');
-
-cloudinary.config({ 
-	  cloud_name: 'hangookdo', 
-	  api_key: '436556581928884', 
-	  api_secret: 'KLVV9wFLMeYii-RGFCCZD1pTzRg' 
-});
 
 module.exports = {
 		
 		upload: function(req, res){
+			
+			var cloudinary = sails.config.connections.cloudinary;
 			
 			res.setTimeout(0);
 			var photo = null;
@@ -33,10 +27,10 @@ module.exports = {
 		    	  if (err) return res.send(500, err);
 		    	  
 		    	  for(var i = 0; i < uploadedFiles.length; i++){
-		    		  
-			    	  photo = uploadedFiles[i];
 					  // Get temp file path
-					  var imageFile = req.file;
+			    	  photo = uploadedFiles[i];
+
+			    	  var filename = photo.filename;
 					  // Upload file to Cloudinary
 					  cloudinary.uploader.upload(photo.fd)
 					  .then(function(image){
@@ -48,6 +42,8 @@ module.exports = {
 								});
 						    }
 						    
+						    image.name = filename;
+						    
 						    Photo.create(image).exec(function(error, user) {
 						    	if (error) {
 									res.send(500, {
@@ -56,7 +52,8 @@ module.exports = {
 								}
 						    	
 						    	res.send(200, {
-									 message: "All the photos have been uploaded."
+									 message: "All the photos have been uploaded.",
+									 data: image
 						    	});
 						    	
 						    })	
@@ -68,6 +65,22 @@ module.exports = {
 		    	  }
 		        });
 			
+		},
+		
+		count: function(req, res){
+			
+			Photo.count().exec(function(err, number){
+				if (err) {
+					res.send(500, {
+						error : "Error while counting photo"
+					});
+				}
+				
+				res.send(200, {
+					message: "Count done.",
+					number: number
+		    	});
+			});
 		}
 		
 };

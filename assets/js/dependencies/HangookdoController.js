@@ -3,84 +3,22 @@
 hangookdoApp.controller('MainCtrl',function($scope, HangookdoService, $window) {
 	 $scope.pageClass = 'page-home';
 	 $scope.myInterval = 4000;
+	
+	 $scope.news = [];
 	 
-	 var DesktopSlides = [
-          {
-          	style: {
-      			'background': 'url("images/title_1_c.png")',
-      			'background-color': '#8f2831',
-      			'background-repeat': 'no-repeat',
-      			'background-position': 'center'
-          	}
-          },{
-          	style: {
-          		'background': 'url("images/title_2_c.png")',
-          		'background-color': '#000000',
-      			'background-repeat': 'no-repeat',
-      			'background-position': 'center'
-  			}
-          },{
-      		style: {
-      			'background': 'url("images/title_3_c.png")',
-      			'background-color': '#3D577A',
-      			'background-repeat': 'no-repeat',
-      			'background-position': 'center'
-      			}
-          },{
-      		style: {
-      			'background': 'url("images/title_4_c.png")',
-      			'background-color': '#FFA300',
-      			'background-repeat': 'no-repeat',
-      			'background-position': 'center'
-      			}
-          },{
-      		style: {
-      			'background': 'url("images/title_5_c.png")',
-      			'background-color': '#AEBD63',
-      			'background-repeat': 'no-repeat',
-      			'background-position': 'center'
-      			}
-          }
-  	  ];
+	 $scope.promise = HangookdoService.newsList();
+		
+	 $scope.promise.then(function(result){
+		 // Initialise news
+		 for(var i = 0; i < result.length; i++){
+			 if(result[i].titlePhoto == undefined || result[i].titlePhoto == null){
+				 result[i].titlePhoto = "http://res.cloudinary.com/hangookdo/image/upload/v1424316171/axcgafiejudjjzwi6qae.jpg"
+			 }
+			 $scope.news.push(result[i]);
+		 }
+	 });
 	 
-	 var MobileSlides = [
-          {
-          	style: {
-      			'background': 'url("images/title_1_m.png")',
-      			'background-color': '#8f2831',
-      			'background-repeat': 'no-repeat',
-      			'background-position': 'center'
-          	}
-          },{
-          	style: {
-          		'background': 'url("images/title_2_m.png")',
-          		'background-color': '#000000',
-      			'background-repeat': 'no-repeat',
-      			'background-position': 'center'
-  			}
-          },{
-      		style: {
-      			'background': 'url("images/title_3_m.png")',
-      			'background-color': '#3D577A',
-      			'background-repeat': 'no-repeat',
-      			'background-position': 'center'
-      			}
-          },{
-      		style: {
-      			'background': 'url("images/title_4_m.png")',
-      			'background-color': '#FFA300',
-      			'background-repeat': 'no-repeat',
-      			'background-position': 'center'
-      			}
-          },{
-      		style: {
-      			'background': 'url("images/title_5_m.png")',
-      			'background-color': '#AEBD63',
-      			'background-repeat': 'no-repeat',
-      			'background-position': 'center'
-      			}
-          }
-  	  ];
+	 getSlides();
 	 
 	 function getSlides(){
 		 if($window.innerWidth < 768){
@@ -89,26 +27,32 @@ hangookdoApp.controller('MainCtrl',function($scope, HangookdoService, $window) {
 			 $scope.slides = DesktopSlides;
 		 }
 	 }
-	 
-	 getSlides();
-	 
+
 	 angular.element($window).bind('resize', function() {
 		 getSlides();
 	 });
 	  
-//	  $scope.addSlide = function() {
-//	    var newWidth = 600 + slides.length;
-//	    slides.push({
-//	      image: 'http://placekitten.com/' + newWidth + '/300',
-//	      text: ['More','Extra','Lots of','Surplus'][slides.length % 4] + ' ' +
-//	        ['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-//	    });
-//	  };
-//	  for (var i=0; i<4; i++) {
-//	    $scope.addSlide();
-//	  }
+	 $scope.viewNews = function(newsItem){
+		 $window.location.href = '#/news?id=' + newsItem.id;
+	 }
+	 
 });
 
+hangookdoApp.controller('NewsCtrl',function($scope, $window, HangookdoService, $routeParams) {
+	$scope.pageClass = 'page-news';
+	$scope.goHome = function (){
+		
+	};
+	// Initialise news data
+	$scope.promise = HangookdoService.getNews($routeParams.id);
+	
+	$scope.promise.then(function(result){
+		$scope.news = result;
+	});
+	$scope.promise.catch(function(data){
+		 alert(data);
+	 });
+});
 
 hangookdoApp.controller('AboutCtrl',function($scope, $location, $anchorScroll) {
 	$scope.pageClass = 'page-about';
@@ -312,7 +256,7 @@ hangookdoApp.controller('NavCtrl',function($scope, $location, $cookieStore, Hang
     });
     
     $scope.enterAdmin = function(){
-    	$window.location.href = 'newseditor';
+    	$window.location.href = 'cms';
     }
     
 });
@@ -420,3 +364,82 @@ hangookdoApp.controller('FooterCtrl',function($scope, $location, $anchorScroll) 
 	  };
 });
 
+
+
+var DesktopSlides = [
+         {
+         	style: {
+     			'background': 'url("images/title_1_c.png")',
+     			'background-color': '#8f2831',
+     			'background-repeat': 'no-repeat',
+     			'background-position': 'center'
+         	}
+         },{
+         	style: {
+         		'background': 'url("images/title_2_c.png")',
+         		'background-color': '#000000',
+     			'background-repeat': 'no-repeat',
+     			'background-position': 'center'
+ 			}
+         },{
+     		style: {
+     			'background': 'url("images/title_3_c.png")',
+     			'background-color': '#3D577A',
+     			'background-repeat': 'no-repeat',
+     			'background-position': 'center'
+     			}
+         },{
+     		style: {
+     			'background': 'url("images/title_4_c.png")',
+     			'background-color': '#FFA300',
+     			'background-repeat': 'no-repeat',
+     			'background-position': 'center'
+     			}
+         },{
+     		style: {
+     			'background': 'url("images/title_5_c.png")',
+     			'background-color': '#AEBD63',
+     			'background-repeat': 'no-repeat',
+     			'background-position': 'center'
+     			}
+         }
+ 	  ];
+ 
+ var MobileSlides = [
+         {
+         	style: {
+     			'background': 'url("images/title_1_m.png")',
+     			'background-color': '#8f2831',
+     			'background-repeat': 'no-repeat',
+     			'background-position': 'center'
+         	}
+         },{
+         	style: {
+         		'background': 'url("images/title_2_m.png")',
+         		'background-color': '#000000',
+     			'background-repeat': 'no-repeat',
+     			'background-position': 'center'
+ 			}
+         },{
+     		style: {
+     			'background': 'url("images/title_3_m.png")',
+     			'background-color': '#3D577A',
+     			'background-repeat': 'no-repeat',
+     			'background-position': 'center'
+     			}
+         },{
+     		style: {
+     			'background': 'url("images/title_4_m.png")',
+     			'background-color': '#FFA300',
+     			'background-repeat': 'no-repeat',
+     			'background-position': 'center'
+     			}
+         },{
+     		style: {
+     			'background': 'url("images/title_5_m.png")',
+     			'background-color': '#AEBD63',
+     			'background-repeat': 'no-repeat',
+     			'background-position': 'center'
+     			}
+         }
+ 	  ];

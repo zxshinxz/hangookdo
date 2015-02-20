@@ -2,25 +2,42 @@
 	<input ng-click="backToNewsList()" class="amber-button hgd-button btn btn-default btn-lg" type="button" value="&lt; News List" />
 </div>
 <h1>{{heading}}</h1>
-<form id="news-form" ng-model="formData" action="news" method="post">
-	<table class="news-form-table">
-		<tbody>
-			<tr>
-				<td>
-				<input class="news-title form-control" type="text" ng-model="formData.title" name="title" />
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<div class="news-editor-textarea" text-angular="text-angular" name="htmlcontent" ng-model="formData.content" ta-disabled='disabled'></div>
-				</td>
-			</tr>
-			<tr>
-				<td>
-				<input class="red-button news-form-button hgd-button btn btn-default btn-lg" type="button" ng-click="backToNewsList()" value="Cancel" />
-				<input class="green-button news-form-button hgd-button btn btn-default btn-lg" type="button" ng-click="submit()" value="Submit" />
-				</td>
-			</tr>
-		</tbody>
-	</table>
-</form>
+<table class="news-form-table">
+	<tbody>
+		<tr>
+			<td>
+			<input class="news-title form-control" type="text" ng-model="formData.title" name="title" />
+			</td>
+		</tr>
+		<tr>
+			<td><span>Title Image</span><img style="width:100px;" ng-src="{{formData.titlephoto}}"/>
+			<button class="btn" ng-click="selectTitlePhoto()">
+				Select
+			</button></td>
+		</tr>
+		<tr>
+			<td><div ta-toolbar="toolbar" class="news-editor-textarea" text-angular="text-angular" name="htmlcontent" ng-model="formData.content" ta-disabled='disabled'></div></td>
+		</tr>
+		<tr>
+			<td>
+			<input class="red-button news-form-button hgd-button btn btn-default btn-lg" type="button" ng-click="backToNewsList()" value="Cancel" />
+			<input class="green-button news-form-button hgd-button btn btn-default btn-lg" type="button" ng-click="submit()" value="Submit" />
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<script type="text/ng-template" id="selectTitlePhoto.html">
+	<div class="modal-header">
+		<h3 class="modal-title">Selete Title Photo</h3>
+	</div>
+	<div class="modal-body image-select" >
+		<div class="col-lg-4" ng-repeat="item in photos" ng-show="photos.length>0">
+			<img src="{{item.url}}" class="col-lg-12 div-align-center"></img>
+		</div>
+		<div ng-show="loadingDone && !photos || photos.length < 1 ">No photos are available</div>
+		<div ng-show="!loadingDone">Loading...</div>
+	</div>
+	<div class="modal-footer">
+	</div>
+</script>

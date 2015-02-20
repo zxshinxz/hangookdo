@@ -299,6 +299,43 @@ hangookdoApp.service('HangookdoService', function($q, $http, LocalService, Acces
 		return LocalService.get('hangookdo_auth_token');
 	}
 	
+	var _newsList = function() {
+		var deferred = $q.defer();
+		
+		$http({
+			url: 'news',
+			method: 'GET',
+			params: {sort: 'createdAt DESC', limit: 3}
+		})
+		.success(function(data, status, headers, config){
+			deferred.resolve(data);
+		})
+		.error(function(data, status, headers, config){
+			deferred.reject();
+		});
+		
+		return deferred.promise;
+	};
+	
+	var _getNews = function(id) {
+		var deferred = $q.defer();
+		
+		$http({
+			url: 'news',
+			method: 'GET',
+			params: {id: id}
+		})
+		.success(function(data, status, headers, config){
+			deferred.resolve(data);
+		})
+		.error(function(data, status, headers, config){
+			
+			deferred.reject();
+		});
+		
+		return deferred.promise;
+	};
+	
 
 	return {
 		createFile : _createFile,
@@ -317,6 +354,8 @@ hangookdoApp.service('HangookdoService', function($q, $http, LocalService, Acces
 		isAdmin: _isAdmin,
 		getUser: _getUser,
 		authorize: _authorize,
-		isAuthenticated: _isAuthenticated
+		isAuthenticated: _isAuthenticated,
+		newsList: _newsList,
+		getNews: _getNews
 	};
 });

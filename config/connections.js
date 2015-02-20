@@ -19,6 +19,27 @@
  * http://sailsjs.org/#/documentation/reference/sails.config/sails.config.connections.html
  */
 
+// Mail service
+var nodemailer = require("nodemailer");
+var smtpTransport = nodemailer.createTransport("SMTP",{
+	host: "smtp.mandrillapp.com", // hostname
+	port: 587, // port for secure SMTP
+	auth: {
+	     user: "app27007423@heroku.com",
+	     pass: "OVV5I-36lAWpUYL7CRdqnw"
+	}
+});
+
+
+// Photo store
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+	  cloud_name: 'hangookdo', 
+	  api_key: '436556581928884', 
+	  api_secret: 'KLVV9wFLMeYii-RGFCCZD1pTzRg' 
+});
+
+
 module.exports.connections = {
 
   /***************************************************************************
@@ -99,14 +120,18 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
 
-email:{
-	host: "smtp.mandrillapp.com", // hostname
-//	    secureConnection: true, // use SSL
-    port: 587, // port for secure SMTP
-//		service: "smtp.mandrillapp.com",
-	emailId: "app27007423@heroku.com",
-	emailPsd: "OVV5I-36lAWpUYL7CRdqnw"
-},
+email: smtpTransport,
+
+cloudinary: cloudinary
+
+//{
+//	host: "smtp.mandrillapp.com", // hostname
+////	    secureConnection: true, // use SSL
+//    port: 587, // port for secure SMTP
+////		service: "smtp.mandrillapp.com",
+//	emailId: "app27007423@heroku.com",
+//	emailPsd: "OVV5I-36lAWpUYL7CRdqnw"
+//},
 	
 //	email:{
 //		service: "Gmail",
