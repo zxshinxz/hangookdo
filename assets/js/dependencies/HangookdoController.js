@@ -11,8 +11,8 @@ hangookdoApp.controller('MainCtrl',function($scope, HangookdoService, $window) {
 	 $scope.promise.then(function(result){
 		 // Initialise news
 		 for(var i = 0; i < result.length; i++){
-			 if(result[i].titlePhoto == undefined || result[i].titlePhoto == null){
-				 result[i].titlePhoto = "http://res.cloudinary.com/hangookdo/image/upload/v1424316171/axcgafiejudjjzwi6qae.jpg"
+			 if(result[i].titlephoto == undefined || result[i].titlephoto == null){
+				 result[i].titlephoto = "http://res.cloudinary.com/hangookdo/image/upload/v1424316171/axcgafiejudjjzwi6qae.jpg"
 			 }
 			 $scope.news.push(result[i]);
 		 }

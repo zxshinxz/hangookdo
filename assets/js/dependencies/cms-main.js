@@ -121,33 +121,58 @@ cmsApp.controller('newsEditCtrl', function($scope, CMSHangookdoService, $window,
 		//in the launch function
     	var modalInstance = $modal.open({
     	      templateUrl: 'selectTitlePhoto.html',
-    	      controller: ['$scope', 'CMSHangookdoService', function ($scope, CMSHangookdoService ) {
+    	      controller: ['$scope', 'CMSHangookdoService', '$modalInstance', function ($scope, CMSHangookdoService, $modalInstance ) {
     	    		$scope.photos = null;
-    	    		$scope.numberOfPhotos = null;
+    	    		$scope.numberOfPages = null;
     	    		$scope.loadingDone = false;
+    	    		$scope.currentPage = 1;
+    	    		
+    	    		loadPhotos($scope.currentPage);
     	    		
     	    		// Count list images 
     	    		$scope.promiseImagesCounts = CMSHangookdoService.countImages();
     	    		$scope.promiseImagesCounts.then(function(result){
-    	    			$scope.numberOfPhotos = result.number;
-    	    		});
-    	    		
-    	    		// Load list images 
-    	    		$scope.promiseImages = CMSHangookdoService.getImages({sort: 'createdAt DESC', skip: 0, limit: 12});
-    	    		$scope.promiseImages.then(function(result){
-    	    			$scope.loadingDone = true;
-    	    			$scope.photos = result;
+    	    			$scope.numberOfPages =  Math.floor(result.number/12) + 1;
     	    		});
     	    		
     	    		
+    	    		function loadPhotos(currentPage){
+    	    			$scope.loadingDone = false;
+    	    			var skip = (currentPage-1) * 12
+    	    			
+	    	    		// Load list images 
+	    	    		$scope.promiseImages = CMSHangookdoService.getImages({sort: 'createdAt DESC', skip: skip, limit: 12});
+	    	    		$scope.promiseImages.then(function(result){
+	    	    			$scope.loadingDone = true;
+	    	    			$scope.photos = result;
+	    	    		});
+    	    		}
     	    		
+    	    		$scope.prevPage = function(){
+    	    			$scope.currentPage--;
+    	    			loadPhotos($scope.currentPage);
+    	    		}
+
+					$scope.nextPage = function(){
+						$scope.currentPage++;
+						loadPhotos($scope.currentPage);
+					}
+					
+					$scope.selectPhoto = function(url){
+						$modalInstance.close(url);
+			       	};
+
+					$scope.cancel = function () {
+						$modalInstance.dismiss('cancel');
+					}
     	    	}],
     	      backdrop: false
     	    });
     	
     	
     	 modalInstance.result.then(function (imageLink) {
-    	  });
+    		 $scope.formData.titlephoto = imageLink;
+    	 });
 	}
 	
 });

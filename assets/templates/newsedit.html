@@ -10,7 +10,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td><span>Title Image</span><img style="width:100px;" ng-src="{{formData.titlephoto}}"/>
+			<td><span>Title Image</span><br><img style="width:100px;" ng-src="{{formData.titlephoto}}"/>
 			<button class="btn" ng-click="selectTitlePhoto()">
 				Select
 			</button></td>
@@ -32,12 +32,22 @@
 		<h3 class="modal-title">Selete Title Photo</h3>
 	</div>
 	<div class="modal-body image-select" >
-		<div class="col-lg-4" ng-repeat="item in photos" ng-show="photos.length>0">
-			<img src="{{item.url}}" class="col-lg-12 div-align-center"></img>
+		<div class="col-lg-4" ng-repeat="item in photos" ng-hide="!loadingDone">
+			<img src="{{item.url}}" class="col-lg-12 div-align-center photo-item" ng-click="selectPhoto(item.url)"></img>
 		</div>
 		<div ng-show="loadingDone && !photos || photos.length < 1 ">No photos are available</div>
 		<div ng-show="!loadingDone">Loading...</div>
 	</div>
 	<div class="modal-footer">
+		<div class="col-lg-4 div-align-center" >
+		<button ng-click="prevPage()" ng-hide="currentPage <= 1" class="page-btn">&lt; prev</button>
+		</div>
+		<div class="col-lg-2 div-align-center page-label" >{{currentPage}}</div>
+		<div class="col-lg-4 div-align-center" >
+		<button ng-click="nextPage()" ng-hide="currentPage >= numberOfPages" class="page-btn"> next &gt;</button>
+		</div>
+		<div class="col-lg-2 div-align-center" >
+		<button ng-click="cancel()" class="page-btn">Close</button>
+		</div>
 	</div>
 </script>

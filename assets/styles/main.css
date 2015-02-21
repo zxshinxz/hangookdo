@@ -18,6 +18,18 @@
 	height: 100%
 }
 
+.page-btn{
+	padding: 5px 20px;
+}
+
+.page-label{
+	font-size: 24px;
+}
+
+.photo-item{
+	cursor: pointer;
+}
+
 #footer {
 	position: relative;
 	/* negative value of footer height
